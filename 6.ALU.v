@@ -9,7 +9,7 @@ module ALU(
 	input [31:0] pc,
 	
         input alu_regri,
-	//input [31:0] data_mem [0:255] ,
+
 	output reg [31:0] next_pc,
         output reg [31:0] write_data,
 	output reg [31:0] sum
@@ -50,15 +50,15 @@ case(alu_op)
 
 5'd5: write_data = (read_data1 < operand2)? 32'd1: 32'd0;
 
-//5'd6: write_data = read_data1 + operand2;
+
 
 5'd9:  begin //load 
 	sum= read_data1 + immOut;
-	//write_data = data_mem[sum];
+
 	end
 5'd10: begin //store
 	sum= read_data1 + immOut;
-	//data_mem[sum] = read_data2;
+	
 	end
 5'd11:  begin
 	branch_addr= (read_data1==read_data2)? immOut: 32'd4;
